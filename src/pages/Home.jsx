@@ -14,7 +14,7 @@ export default function Home() {
     subtitle: "A Novel",
     currentPage: 264,
     totalPages: 773,
-    coverUrl: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1327881361i/5327.jpg",
+    coverUrl: "https://upload.wikimedia.org/wikipedia/commons/3/39/Mason_%26_Dixon_%281997_1st_ed_jacket_cover%29.jpg",
     bookLink: "https://www.goodreads.com/book/show/5327.Mason_Dixon"
   };
 
