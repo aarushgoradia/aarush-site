@@ -79,8 +79,5 @@ jspm_packages/
 tmp/
 temp/
 
-# Backend node_modules (but keep the backend folder)
-backend/node_modules/
-
 # Local development
 .vercel

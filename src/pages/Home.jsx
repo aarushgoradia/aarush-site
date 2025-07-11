@@ -5,14 +5,21 @@ export default function Home() {
   const [typewriterText, setTypewriterText] = useState("");
   const [easterEggText, setEasterEggText] = useState("");
   const [showEasterEgg, setShowEasterEgg] = useState(false);
-  const [currentBook, setCurrentBook] = useState({
-    title: "The Innovators",
-    author: "Walter Isaacson",
-    subtitle: "How a Group of Hackers, Geniuses, and Geeks Created the Digital Revolution",
-    progress: 65,
-    coverUrl: null,
-    bookLink: "https://www.goodreads.com/book/show/21013851-the-innovators"
-  });
+  // ============================================
+  // 📚 CURRENTLY READING BOOK - UPDATE HERE!
+  // ============================================
+  const currentBook = {
+    title: "Mason & Dixon",
+    author: "Thomas Pynchon",
+    subtitle: "A Novel",
+    currentPage: 264,
+    totalPages: 773,
+    coverUrl: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1327881361i/5327.jpg",
+    bookLink: "https://www.goodreads.com/book/show/5327.Mason_Dixon"
+  };
+
+  // Calculate progress percentage
+  const progress = Math.round((currentBook.currentPage / currentBook.totalPages) * 100);
   
   const fullText = "ECE @ Princeton • Designing high-performance computing systems from silicon up.";
   const easterEggMessage = "I'm actually minoring in English!";
@@ -63,29 +70,6 @@ export default function Home() {
       }
     }, 80);
   };
-
-  // Fetch current book from Goodreads
-  useEffect(() => {
-    const fetchCurrentBook = async () => {
-      try {
-        // Try to fetch from your backend API
-        const response = await fetch('http://localhost:3001/api/current-book/85769740');
-        if (response.ok) {
-          const bookData = await response.json();
-          setCurrentBook(bookData);
-        }
-      } catch (error) {
-        console.error('Error fetching book data:', error);
-        // Fallback to static data if API fails
-      }
-    };
-    
-    fetchCurrentBook();
-    
-    // Refresh book data every 30 minutes
-    const interval = setInterval(fetchCurrentBook, 30 * 60 * 1000);
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <div className="min-h-[calc(100vh-4rem)] bg-gray-900 text-white font-mono flex flex-col md:flex-row">
@@ -181,14 +165,17 @@ export default function Home() {
                 <p className="text-sm text-gray-400 mb-3 line-clamp-2">
                   {currentBook.subtitle}
                 </p>
-                <div className="flex items-center space-x-2">
-                  <div className="w-20 bg-gray-700 rounded-full h-2">
-                    <div 
-                      className="bg-cyan-500 h-2 rounded-full transition-all duration-300" 
-                      style={{ width: `${currentBook.progress}%` }}
-                    ></div>
-                  </div>
-                  <span className="text-sm text-gray-400">{currentBook.progress}%</span>
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-xs text-gray-500">
+                    Page {currentBook.currentPage} of {currentBook.totalPages}
+                  </span>
+                  <span className="text-sm text-gray-400">{progress}%</span>
+                </div>
+                <div className="w-full bg-gray-700 rounded-full h-2">
+                  <div 
+                    className="bg-cyan-500 h-2 rounded-full transition-all duration-300" 
+                    style={{ width: `${progress}%` }}
+                  ></div>
                 </div>
               </div>
             </div>
