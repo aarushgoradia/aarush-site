@@ -1,0 +1,19 @@
+{
+  "name": "goodreads-scraper",
+  "version": "1.0.0",
+  "description": "Backend scraper for Goodreads currently reading books",
+  "main": "goodreads-scraper.js",
+  "scripts": {
+    "start": "node goodreads-scraper.js",
+    "dev": "nodemon goodreads-scraper.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "cheerio": "^1.0.0-rc.12",
+    "axios": "^1.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
