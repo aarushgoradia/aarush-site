@@ -1,7 +1,6 @@
 {
   "name": "aarush-site",
   "version": "1.0.0",
-  "homepage": "https://aarushgoradia.github.io/aarush-site",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
