@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Reset default browser styles to eliminate white bars */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* Easter egg fade-out effect */
+.easter-egg-message {
+  opacity: 1;
+}
+
+.easter-egg-message.fade-out {
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+}
