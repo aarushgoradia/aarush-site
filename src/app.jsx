@@ -11,8 +11,6 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/work" element={<WorkPage />} />
-        <Route path="/work#experience" element={<WorkPage />} />
-        <Route path="/work#projects" element={<WorkPage />} />
       </Routes>
     </Router>
   );
