@@ -76,7 +76,7 @@ export default function Home() {
       {/* Left Half: Photo */}
       <div className="md:w-1/2 w-full flex items-center justify-center overflow-hidden p-6">
         <img
-          src="/my-photo.jpg"
+          src="/aarush-site/my-photo.jpg"
           alt="Aarush Goradia"
           className="w-full h-full max-h-[85vh] object-cover object-top rounded-lg shadow-lg"
         />
