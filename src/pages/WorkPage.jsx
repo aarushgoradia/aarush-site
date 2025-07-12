@@ -101,19 +101,9 @@ const workItems = [
 
 export default function WorkPage() {
   const [showDetailedTimeline, setShowDetailedTimeline] = useState(false);
+  
   const experiences = workItems.filter(item => item.type === "experience");
   const projects = workItems.filter(item => item.type === "project");
-
-  // Handle scroll to section on page load
-  useEffect(() => {
-    const hash = window.location.hash;
-    if (hash) {
-      const element = document.querySelector(hash);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
-  }, []);
 
   const experienceEmojis = ["🚀", "🔧", "🧠", "🤖"];
   const personalityQuips = [
