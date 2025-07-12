@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { FaExternalLinkAlt } from "react-icons/fa";
 
 const workItems = [
@@ -100,8 +100,6 @@ const workItems = [
 ];
 
 export default function WorkPage() {
-  const [showDetailedTimeline, setShowDetailedTimeline] = useState(false);
-  
   const experiences = workItems.filter(item => item.type === "experience");
   const projects = workItems.filter(item => item.type === "project");
 
@@ -286,11 +284,15 @@ export default function WorkPage() {
                   {personalityQuips[index]}
                 </p>
               )}
-              <div className="text-base text-gray-700 mb-6 line-clamp-3 font-body leading-relaxed">
-                {item.bullets[0]}
+              <div className="text-base text-gray-700 mb-6 font-body leading-relaxed">
+                <ul className="list-disc list-inside space-y-2">
+                  {item.bullets.map((point, i) => (
+                    <li key={i} className="leading-relaxed">{point}</li>
+                  ))}
+                </ul>
               </div>
               <div className="flex flex-wrap gap-2 mb-4">
-                {item.tags.slice(0, 4).map((tag) => (
+                {item.tags.map((tag) => (
                   <span
                     key={tag}
                     className="text-sm bg-purple-50 text-purple-700 px-3 py-1 rounded-full border border-purple-200 font-medium"
@@ -298,9 +300,6 @@ export default function WorkPage() {
                     {tag}
                   </span>
                 ))}
-                {item.tags.length > 4 && (
-                  <span className="text-sm text-gray-500 font-body">+{item.tags.length - 4} more</span>
-                )}
               </div>
               {item.links && (
                 <div className="flex flex-wrap gap-4">
@@ -320,72 +319,6 @@ export default function WorkPage() {
             </div>
           ))}
         </div>
-        
-        {/* Detailed Timeline Toggle */}
-        <div className="text-center">
-          <button 
-            onClick={() => setShowDetailedTimeline(!showDetailedTimeline)}
-            className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-8 py-4 rounded-xl transition-all duration-300 font-heading font-semibold shadow-lg hover:shadow-xl"
-          >
-            {showDetailedTimeline ? 'Hide' : 'Show'} Detailed Timeline
-          </button>
-        </div>
-        
-        {/* Detailed Timeline */}
-        {showDetailedTimeline && (
-          <div className="max-w-7xl mx-auto mt-10 bg-white rounded-2xl p-8 shadow-lg border border-purple-100">
-            <h3 className="text-3xl font-heading font-bold text-gray-800 mb-8 text-center">Detailed Timeline</h3>
-            <div className="space-y-8">
-              {experiences.map((item, index) => (
-                <div key={index} className="border-l-4 border-purple-300 pl-6 ml-4">
-                  <div className="bg-purple-50 rounded-xl p-6 hover:bg-purple-100 transition-colors">
-                    <div className="flex items-center gap-3 mb-2">
-                      <div className="text-lg font-heading font-bold text-gray-800">
-                        {experienceEmojis[index]} {item.title}
-                      </div>
-                    </div>
-                    <p className="text-sm text-gray-500 italic mb-3 font-body">{item.timeframe}</p>
-                    {personalityQuips[index] && (
-                      <p className="text-sm text-purple-600 mb-4 italic font-medium font-body">
-                        {personalityQuips[index]}
-                      </p>
-                    )}
-                    <ul className="list-disc list-inside text-gray-700 space-y-2 mb-4 font-body">
-                      {item.bullets.map((point, i) => (
-                        <li key={i} className="leading-relaxed">{point}</li>
-                      ))}
-                    </ul>
-                    <div className="flex flex-wrap gap-2 mb-3">
-                      {item.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="text-sm bg-white text-purple-700 px-3 py-1 rounded-full border border-purple-200 font-medium"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                    {item.links && (
-                      <div className="flex flex-wrap gap-4">
-                        {item.links.map((link, i) => (
-                          <a
-                            key={i}
-                            href={link.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-purple-600 hover:text-purple-500 underline transition-colors font-body"
-                          >
-                            {link.text}
-                          </a>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
       </section>
 
       {/* Projects Section - Grid */}
