@@ -4,8 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Aarush Goradia</title>
-    <script type="module" crossorigin src="/assets/index-Dq8U9Cjp.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-C7Y4RcLR.css">
+    <script>
+      // GitHub Pages SPA redirect recovery
+      (function() {
+        var redirect = sessionStorage.redirect;
+        delete sessionStorage.redirect;
+        if (redirect && redirect != location.href) {
+          history.replaceState(null, null, redirect);
+        }
+      })();
+    </script>
+    <script type="module" crossorigin src="/aarush-site/assets/index-QTzbk_M_.js"></script>
+    <link rel="stylesheet" crossorigin href="/aarush-site/assets/index-C7Y4RcLR.css">
   </head>
   <body>
     <div id="root"></div>
