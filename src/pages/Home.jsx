@@ -15,7 +15,7 @@ export default function Home() {
     currentPage: 264,
     totalPages: 773,
     coverUrl: "https://upload.wikimedia.org/wikipedia/commons/3/39/Mason_%26_Dixon_%281997_1st_ed_jacket_cover%29.jpg",
-    bookLink: "https://www.goodreads.com/book/show/5327.Mason_Dixon"
+    bookLink: "https://www.goodreads.com/book/show/413.Mason_Dixon?from_search=true&from_srp=true&qid=La8fPdLG2G&rank=1"
   };
 
   // Calculate progress percentage
