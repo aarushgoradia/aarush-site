@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FaExternalLinkAlt } from "react-icons/fa";
 
 const workItems = [
@@ -55,6 +55,16 @@ const workItems = [
   },
   {
     type: "project",
+    title: "PUnC (Princeton University Computer)",
+    timeframe: "November 2024 – December 2024",
+    bullets: [
+      "Designed a custom 16-instruction processor using FSM-based control and datapath logic.",
+      "Wrote and simulated Verilog modules using AMD Vivado and deployed to an FPGA board for functional testing."
+    ],
+    tags: ["Verilog", "FPGA", "Vivado", "Digital Design"]
+  },
+  {
+    type: "project",
     title: "Memory Pool Allocator",
     timeframe: "July 2025",
     bullets: [
@@ -90,8 +100,20 @@ const workItems = [
 ];
 
 export default function WorkPage() {
+  const [showDetailedTimeline, setShowDetailedTimeline] = useState(false);
   const experiences = workItems.filter(item => item.type === "experience");
   const projects = workItems.filter(item => item.type === "project");
+
+  // Handle scroll to section on page load
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      const element = document.querySelector(hash);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, []);
 
   const experienceEmojis = ["🚀", "🔧", "🧠", "🤖"];
   const personalityQuips = [
@@ -107,7 +129,7 @@ export default function WorkPage() {
       className={`flex w-full mb-2 ${index % 2 === 0 ? 'flex-row-reverse' : ''}`}
     >
       <div className="w-5/12">
-        <div className="bg-gray-800 border border-gray-700 rounded-lg p-3 hover:border-cyan-500 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/10">
+        <div className="bg-gray-800 border border-gray-700 rounded-lg p-3 hover:border-purple-500 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/10">
           <div className="flex items-center gap-3 mb-1">
             <div className="text-base font-semibold text-white">
               {experienceEmojis[index]} {item.title}
@@ -117,7 +139,7 @@ export default function WorkPage() {
                 href={item.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-cyan-400 hover:text-cyan-300 transition-colors"
+                className="text-purple-400 hover:text-purple-300 transition-colors"
               >
                 <FaExternalLinkAlt size={12} />
               </a>
@@ -125,7 +147,7 @@ export default function WorkPage() {
           </div>
           <p className="text-xs text-gray-400 italic mb-1">{item.timeframe}</p>
           {personalityQuips[index] && (
-            <p className="text-xs text-cyan-300 mb-2 italic font-medium">
+            <p className="text-xs text-purple-300 mb-2 italic font-medium">
               {personalityQuips[index]}
             </p>
           )}
@@ -138,7 +160,7 @@ export default function WorkPage() {
             {item.tags.map((tag) => (
               <span
                 key={tag}
-                className="text-xs bg-gray-700 text-gray-300 px-1.5 py-0.5 rounded border border-gray-600 hover:border-cyan-500 transition-colors"
+                className="text-xs bg-gray-700 text-gray-300 px-1.5 py-0.5 rounded border border-purple-500"
               >
                 {tag}
               </span>
@@ -152,7 +174,7 @@ export default function WorkPage() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-cyan-400 hover:text-cyan-300 text-xs underline transition-colors"
+                  className="text-purple-400 hover:text-purple-300 text-xs underline transition-colors"
                 >
                   {link.text}
                 </a>
@@ -163,16 +185,17 @@ export default function WorkPage() {
       </div>
       <div className="w-2/12 flex justify-center">
         <div className="flex flex-col items-center">
-          <div className="w-3 h-3 bg-cyan-500 rounded-full border-2 border-gray-900 shadow-lg shadow-cyan-500/30"></div>
-          {index < experiences.length - 1 && <div className="w-0.5 h-full bg-cyan-500 mt-1"></div>}
+          <div className="w-3 h-3 bg-purple-500 rounded-full border-2 border-gray-900 shadow-lg shadow-purple-500/30"></div>
+          {index < experiences.length - 1 && <div className="w-0.5 h-full bg-purple-500 mt-1"></div>}
         </div>
       </div>
       <div className="w-5/12"></div>
     </div>
   );
 
-  const projectEmojis = ["🧮", "🎯", "🌱"];
+  const projectEmojis = ["🖥️", "🧮", "🎯", "🌱"];
   const projectQuips = [
+    "16 instructions, infinite possibilities - built my own CPU 🔧",
     "Because malloc() is for quitters - built my own memory manager 💪",
     "Fixed-point math so precise, it makes floating-point jealous 🎯",
     "Saving the planet one recycling center at a time 🌍"
@@ -181,7 +204,7 @@ export default function WorkPage() {
   const renderProjectItem = (item, index) => (
     <div
       key={index}
-      className="bg-gray-800 border border-gray-700 rounded-lg p-4 hover:border-cyan-500 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/10 hover:transform hover:scale-105"
+      className="bg-gray-800 border border-gray-700 rounded-lg p-4 hover:border-purple-500 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/10 hover:transform hover:scale-105"
     >
       <div className="flex items-center gap-3 mb-2">
         <div className="text-lg font-semibold text-white">
@@ -192,7 +215,7 @@ export default function WorkPage() {
             href={item.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-cyan-400 hover:text-cyan-300 transition-colors"
+            className="text-purple-400 hover:text-purple-300 transition-colors"
           >
             <FaExternalLinkAlt size={14} />
           </a>
@@ -200,7 +223,7 @@ export default function WorkPage() {
       </div>
       <p className="text-sm text-gray-400 italic mb-2">{item.timeframe}</p>
       {projectQuips[index] && (
-        <p className="text-sm text-cyan-300 mb-2 italic font-medium">
+        <p className="text-sm text-purple-300 mb-2 italic font-medium">
           {projectQuips[index]}
         </p>
       )}
@@ -213,7 +236,7 @@ export default function WorkPage() {
         {item.tags.map((tag) => (
           <span
             key={tag}
-            className="text-xs bg-gray-700 text-gray-300 px-2 py-1 rounded border border-gray-600 hover:border-cyan-500 transition-colors"
+            className="text-xs bg-gray-700 text-gray-300 px-2 py-1 rounded border border-purple-500"
           >
             {tag}
           </span>
@@ -227,7 +250,7 @@ export default function WorkPage() {
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-cyan-400 hover:text-cyan-300 text-sm underline transition-colors"
+              className="text-purple-400 hover:text-purple-300 text-sm underline transition-colors"
             >
               {link.text}
             </a>
@@ -238,31 +261,207 @@ export default function WorkPage() {
   );
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white px-6 py-10 font-mono">
-      <div className="text-center mb-10">
-        <h1 className="text-4xl font-bold mb-4">Work & Projects</h1>
-        <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-          From silicon to software, here's where I've been breaking things and (hopefully) fixing them 
+    <div className="min-h-screen bg-amber-50 text-gray-800 px-6 py-10 font-body">
+      <div className="text-center mb-12">
+        <h1 className="text-5xl font-heading font-bold mb-4 text-gray-800">Experience & Projects</h1>
+        <p className="text-xl text-gray-600 max-w-3xl mx-auto font-body">
+          From silicon to software, here's where I've been building amazing things 
         </p>
       </div>
       
-      {/* Experience Section - Timeline */}
-      <section className="mb-10">
-        <h2 className="text-2xl font-semibold text-cyan-300 mb-5 border-b border-cyan-500 pb-2">
-          Experience
+      {/* Experience Section - Compact Cards */}
+      <section id="experience" className="mb-20">
+        <h2 className="text-4xl font-heading font-bold text-purple-600 mb-10 text-center">
+          💼 Experience
         </h2>
-        <div className="max-w-6xl mx-auto">
-          {experiences.map((item, index) => renderExperienceItem(item, index))}
+        
+        {/* Experience Summary Cards */}
+        <div className="grid md:grid-cols-2 gap-8 max-w-7xl mx-auto mb-10">
+          {experiences.map((item, index) => (
+            <div
+              key={index}
+              className="bg-white border border-purple-100 rounded-2xl p-8 hover:border-purple-300 transition-all duration-300 hover:shadow-xl hover:shadow-purple-100 hover:transform hover:scale-105"
+            >
+              <div className="flex items-center gap-4 mb-4">
+                <div className="text-2xl font-heading font-bold text-gray-800 flex items-center">
+                  {experienceEmojis[index]} {item.title.split(' @ ')[0]}
+                </div>
+              </div>
+              <div className="text-xl font-heading font-semibold text-purple-600 mb-3">
+                @ {item.title.split(' @ ')[1]}
+              </div>
+              <p className="text-sm text-gray-500 italic mb-4 font-body">{item.timeframe}</p>
+              {personalityQuips[index] && (
+                <p className="text-sm text-purple-600 mb-4 italic font-medium font-body">
+                  {personalityQuips[index]}
+                </p>
+              )}
+              <div className="text-base text-gray-700 mb-6 line-clamp-3 font-body leading-relaxed">
+                {item.bullets[0]}
+              </div>
+              <div className="flex flex-wrap gap-2 mb-4">
+                {item.tags.slice(0, 4).map((tag) => (
+                  <span
+                    key={tag}
+                    className="text-sm bg-purple-50 text-purple-700 px-3 py-1 rounded-full border border-purple-200 font-medium"
+                  >
+                    {tag}
+                  </span>
+                ))}
+                {item.tags.length > 4 && (
+                  <span className="text-sm text-gray-500 font-body">+{item.tags.length - 4} more</span>
+                )}
+              </div>
+              {item.links && (
+                <div className="flex flex-wrap gap-4">
+                  {item.links.map((link, i) => (
+                    <a
+                      key={i}
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-purple-600 hover:text-purple-500 text-sm underline transition-colors font-body"
+                    >
+                      {link.text}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
         </div>
+        
+        {/* Detailed Timeline Toggle */}
+        <div className="text-center">
+          <button 
+            onClick={() => setShowDetailedTimeline(!showDetailedTimeline)}
+            className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-8 py-4 rounded-xl transition-all duration-300 font-heading font-semibold shadow-lg hover:shadow-xl"
+          >
+            {showDetailedTimeline ? 'Hide' : 'Show'} Detailed Timeline
+          </button>
+        </div>
+        
+        {/* Detailed Timeline */}
+        {showDetailedTimeline && (
+          <div className="max-w-7xl mx-auto mt-10 bg-white rounded-2xl p-8 shadow-lg border border-purple-100">
+            <h3 className="text-3xl font-heading font-bold text-gray-800 mb-8 text-center">Detailed Timeline</h3>
+            <div className="space-y-8">
+              {experiences.map((item, index) => (
+                <div key={index} className="border-l-4 border-purple-300 pl-6 ml-4">
+                  <div className="bg-purple-50 rounded-xl p-6 hover:bg-purple-100 transition-colors">
+                    <div className="flex items-center gap-3 mb-2">
+                      <div className="text-lg font-heading font-bold text-gray-800">
+                        {experienceEmojis[index]} {item.title}
+                      </div>
+                    </div>
+                    <p className="text-sm text-gray-500 italic mb-3 font-body">{item.timeframe}</p>
+                    {personalityQuips[index] && (
+                      <p className="text-sm text-purple-600 mb-4 italic font-medium font-body">
+                        {personalityQuips[index]}
+                      </p>
+                    )}
+                    <ul className="list-disc list-inside text-gray-700 space-y-2 mb-4 font-body">
+                      {item.bullets.map((point, i) => (
+                        <li key={i} className="leading-relaxed">{point}</li>
+                      ))}
+                    </ul>
+                    <div className="flex flex-wrap gap-2 mb-3">
+                      {item.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="text-sm bg-white text-purple-700 px-3 py-1 rounded-full border border-purple-200 font-medium"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    {item.links && (
+                      <div className="flex flex-wrap gap-4">
+                        {item.links.map((link, i) => (
+                          <a
+                            key={i}
+                            href={link.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-purple-600 hover:text-purple-500 underline transition-colors font-body"
+                          >
+                            {link.text}
+                          </a>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </section>
 
       {/* Projects Section - Grid */}
-      <section>
-        <h2 className="text-2xl font-semibold text-cyan-300 mb-5 border-b border-cyan-500 pb-2">
-          Side Quests
+      <section id="projects">
+        <h2 className="text-4xl font-heading font-bold text-purple-600 mb-10 text-center">
+          🚀 Side Quests
         </h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-7xl mx-auto">
-          {projects.map((item, index) => renderProjectItem(item, index))}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+          {projects.map((item, index) => (
+            <div
+              key={index}
+              className="bg-white border border-purple-100 rounded-2xl p-6 hover:border-purple-300 transition-all duration-300 hover:shadow-xl hover:shadow-purple-100 hover:transform hover:scale-105"
+            >
+              <div className="flex items-center gap-3 mb-3">
+                <div className="text-xl font-heading font-bold text-gray-800">
+                  {projectEmojis[index]} {item.title}
+                </div>
+                {item.link && (
+                  <a
+                    href={item.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-purple-500 hover:text-purple-400 transition-colors"
+                  >
+                    <FaExternalLinkAlt size={16} />
+                  </a>
+                )}
+              </div>
+              <p className="text-sm text-gray-500 italic mb-3 font-body">{item.timeframe}</p>
+              {projectQuips[index] && (
+                <p className="text-sm text-purple-600 mb-3 italic font-medium font-body">
+                  {projectQuips[index]}
+                </p>
+              )}
+              <ul className="list-disc list-inside text-gray-700 space-y-1 mb-4 font-body">
+                {item.bullets.map((point, i) => (
+                  <li key={i} className="leading-relaxed">{point}</li>
+                ))}
+              </ul>
+              <div className="flex flex-wrap gap-2 mb-3">
+                {item.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="text-sm bg-purple-50 text-purple-700 px-3 py-1 rounded-full border border-purple-200 font-medium"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              {item.links && (
+                <div className="flex flex-wrap gap-4">
+                  {item.links.map((link, i) => (
+                    <a
+                      key={i}
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-purple-600 hover:text-purple-500 underline transition-colors font-body"
+                    >
+                      {link.text}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
         </div>
       </section>
     </div>
