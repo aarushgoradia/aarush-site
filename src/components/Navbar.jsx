@@ -1,8 +1,9 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 export default function Navbar() {
   const location = useLocation();
+  const navigate = useNavigate();
   
   const handleSectionNavigation = (sectionId) => {
     if (sectionId === 'experience') {
@@ -10,7 +11,7 @@ export default function Navbar() {
       if (location.pathname === '/work') {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
-        window.location.href = '/work';
+        navigate('/work');
       }
     } else if (sectionId === 'projects') {
       // Projects button should scroll to projects section
@@ -20,7 +21,14 @@ export default function Navbar() {
           element.scrollIntoView({ behavior: 'smooth' });
         }
       } else {
-        window.location.href = '/work#projects';
+        navigate('/work');
+        // After navigation, scroll to projects
+        setTimeout(() => {
+          const element = document.getElementById('projects');
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 100);
       }
     }
   };
