@@ -72,53 +72,53 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-[calc(100vh-4rem)] bg-gray-900 text-white font-mono flex flex-col md:flex-row">
+    <div className="min-h-[calc(100vh-5rem)] bg-amber-50 text-gray-800 font-body flex flex-col md:flex-row">
       {/* Left Half: Photo */}
-      <div className="md:w-1/2 w-full flex items-center justify-center overflow-hidden p-6">
+      <div className="md:w-1/2 w-full flex items-center justify-center overflow-hidden p-8">
         <img
-          src="/aarush-site/my-photo.jpg"
+          src="/my-photo.jpg"
           alt="Aarush Goradia"
-          className="w-full h-full max-h-[85vh] object-cover object-top rounded-lg shadow-lg"
+          className="w-full h-full max-h-[85vh] object-cover object-top rounded-2xl shadow-xl border-4 border-white"
         />
       </div>
 
       {/* Right Half: Intro */}
-      <div className="md:w-1/2 w-full flex flex-col justify-center p-6 md:pl-10 space-y-4 overflow-y-auto">
-        <div className="space-y-3">
-          <h1 className="text-3xl font-bold">Hi, I'm Aarush</h1>
-          <p className="text-lg text-gray-300 h-12">
+      <div className="md:w-1/2 w-full flex flex-col justify-center p-8 md:pl-12 space-y-6 overflow-y-auto">
+        <div className="space-y-4">
+          <h1 className="text-4xl font-heading font-bold text-gray-800">Hi, I'm Aarush</h1>
+          <p className="text-lg text-gray-600 h-12 font-body">
             {typewriterText}
-            <span className="animate-pulse">|</span>
+            <span className="animate-pulse text-purple-500">|</span>
           </p>
 
           {/* Icons */}
-          <div className="flex flex-col space-y-1.5 pt-2 text-sm">
-            <a href="mailto:aarush.goradia@princeton.edu" className="hover:text-cyan-400">
-              <FaEnvelope className="inline mr-2" /> aarush.goradia@princeton.edu
+          <div className="flex flex-col space-y-2 pt-4 text-sm font-body">
+            <a href="mailto:aarush.goradia@princeton.edu" className="text-gray-600 hover:text-purple-500 transition-colors flex items-center">
+              <FaEnvelope className="mr-3 text-purple-400" /> aarush.goradia@princeton.edu
             </a>
-            <a href="https://github.com/aarushgoradia" target="_blank" className="hover:text-cyan-400">
-              <FaGithub className="inline mr-2" /> github.com/aarushgoradia
+            <a href="https://github.com/aarushgoradia" target="_blank" className="text-gray-600 hover:text-purple-500 transition-colors flex items-center">
+              <FaGithub className="mr-3 text-purple-400" /> github.com/aarushgoradia
             </a>
-            <a href="https://www.linkedin.com/in/aarush-goradia-300216215/" target="_blank" className="hover:text-cyan-400">
-              <FaLinkedin className="inline mr-2" /> linkedin.com/in/aarushgoradia
+            <a href="https://www.linkedin.com/in/aarush-goradia-300216215/" target="_blank" className="text-gray-600 hover:text-pink-500 transition-colors flex items-center">
+              <FaLinkedin className="mr-3 text-pink-400" /> linkedin.com/in/aarushgoradia
             </a>
-            <a href="/aarushgoradia-resume-hardware.pdf" target="_blank" className="hover:text-cyan-400">
-              📄 View Hardware Resume
+            <a href="/aarushgoradia-resume-hardware.pdf" target="_blank" className="text-gray-600 hover:text-purple-500 transition-colors flex items-center">
+              <span className="mr-3 text-purple-400">📄</span> View Hardware Resume
             </a>
-            <a href="/aarushgoradia-resume-software.pdf" target="_blank" className="hover:text-green-400">
-              📄 View Software Resume
+            <a href="/aarushgoradia-resume-software.pdf" target="_blank" className="text-gray-600 hover:text-blue-500 transition-colors flex items-center">
+              <span className="mr-3 text-blue-400">📄</span> View Software Resume
             </a>
           </div>
 
           {/* Skills Snapshot */}
-          <div className="flex flex-wrap gap-2 pt-3">
+          <div className="flex flex-wrap gap-3 pt-4">
             {[
               "C++", "C", "Python", "Java", "Verilog",
               "Git","Bash", "Linux"
             ].map((skill) => (
               <span
                 key={skill}
-                className="bg-gray-800 text-sm px-2 py-1 rounded-full border border-cyan-500"
+                className="bg-white text-sm px-3 py-1.5 rounded-full border border-purple-200 text-purple-700 shadow-sm hover:shadow-md transition-shadow font-medium"
               >
                 {skill}
               </span>
@@ -129,32 +129,32 @@ export default function Home() {
         {/* Now Reading Section */}
         <div className="relative">
           <div 
-            className="bg-gray-800 border border-gray-700 rounded-lg p-4 mt-4 cursor-pointer hover:border-cyan-500 transition-colors duration-300"
+            className="bg-white border border-purple-100 rounded-2xl p-6 mt-6 cursor-pointer hover:border-purple-300 transition-all duration-300 hover:shadow-lg"
             onMouseEnter={triggerEasterEgg}
           >
-            <h2 className="text-base font-semibold text-cyan-300 mb-3 flex items-center">
+            <h2 className="text-lg font-heading font-semibold text-purple-600 mb-4 flex items-center">
               📚 Currently Reading
             </h2>
-            <div className="flex items-center space-x-4">
-              <div className="w-16 h-20 bg-gray-700 rounded shadow-lg flex items-center justify-center flex-shrink-0">
+            <div className="flex items-center space-x-5">
+              <div className="w-16 h-20 bg-gradient-to-br from-purple-100 to-pink-100 rounded-lg shadow-md flex items-center justify-center flex-shrink-0">
                 {currentBook.coverUrl ? (
                   <img 
                     src={currentBook.coverUrl} 
                     alt={currentBook.title}
-                    className="w-full h-full object-cover rounded"
+                    className="w-full h-full object-cover rounded-lg"
                   />
                 ) : (
                   <span className="text-2xl">📖</span>
                 )}
               </div>
               <div className="flex-1 min-w-0">
-                <h3 className="text-sm font-semibold text-white mb-1">
+                <h3 className="text-base font-heading font-semibold text-gray-800 mb-1">
                   {currentBook.bookLink ? (
                     <a 
                       href={currentBook.bookLink} 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="hover:text-cyan-300 transition-colors underline"
+                      className="hover:text-purple-600 transition-colors underline decoration-purple-300"
                     >
                       "{currentBook.title}" by {currentBook.author}
                     </a>
@@ -162,18 +162,18 @@ export default function Home() {
                     <span>"{currentBook.title}" by {currentBook.author}</span>
                   )}
                 </h3>
-                <p className="text-sm text-gray-400 mb-3 line-clamp-2">
+                <p className="text-sm text-gray-500 mb-3 line-clamp-2 font-body">
                   {currentBook.subtitle}
                 </p>
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-xs text-gray-500">
+                  <span className="text-xs text-gray-400 font-body">
                     Page {currentBook.currentPage} of {currentBook.totalPages}
                   </span>
-                  <span className="text-sm text-gray-400">{progress}%</span>
+                  <span className="text-sm text-gray-600 font-medium">{progress}%</span>
                 </div>
-                <div className="w-full bg-gray-700 rounded-full h-2">
+                <div className="w-full bg-gray-200 rounded-full h-2">
                   <div 
-                    className="bg-cyan-500 h-2 rounded-full transition-all duration-300" 
+                    className="bg-gradient-to-r from-purple-400 via-pink-400 to-purple-500 h-2 rounded-full transition-all duration-300" 
                     style={{ width: `${progress}%` }}
                   ></div>
                 </div>
@@ -184,13 +184,13 @@ export default function Home() {
           {/* Easter Egg */}
           {showEasterEgg && (
             <div className="easter-egg-message absolute top-full left-1/2 transform -translate-x-1/2 mt-4 z-10">
-              <div className="bg-cyan-500 text-gray-900 px-4 py-2 rounded-lg shadow-lg border-2 border-cyan-400">
-                <p className="text-sm font-bold whitespace-nowrap">
+              <div className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-2 rounded-xl shadow-lg border-2 border-purple-300">
+                <p className="text-sm font-heading font-bold whitespace-nowrap">
                   {easterEggText}
                   <span className="animate-pulse">|</span>
                 </p>
                 <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-full">
-                  <div className="w-0 h-0 border-l-4 border-r-4 border-b-4 border-transparent border-b-cyan-500"></div>
+                  <div className="w-0 h-0 border-l-4 border-r-4 border-b-4 border-transparent border-b-purple-500"></div>
                 </div>
               </div>
             </div>

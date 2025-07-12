@@ -6,11 +6,13 @@ import WorkPage from "./pages/WorkPage";
 
 export default function App() {
   return (
-    <Router basename="/aarush-site">
+    <Router>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/work" element={<WorkPage />} />
+        <Route path="/work#experience" element={<WorkPage />} />
+        <Route path="/work#projects" element={<WorkPage />} />
       </Routes>
     </Router>
   );
