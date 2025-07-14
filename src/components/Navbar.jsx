@@ -15,9 +15,6 @@ export default function Navbar() {
           <Link to="/work" className="text-gray-600 hover:text-purple-500 transition-colors">
             Experience & Projects
           </Link>
-          <a href="https://aarushgoradia.substack.com/" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-purple-500 transition-colors">
-            Blog
-          </a>
         </div>
       </div>
     </nav>
