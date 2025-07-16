@@ -113,8 +113,9 @@ export default function Home() {
           {/* Skills Snapshot */}
           <div className="flex flex-wrap gap-3 pt-4">
             {[
-              "C++", "C", "Python", "Java", "Verilog",
-              "Git","Bash", "Linux"
+              "C++", "C", "Python", "Java", "Verilog", "SystemVerilog",
+              "Git","Bash", "Linux", "Cadence Virtuoso", "AMD Vivado",
+              "KiCAD"
             ].map((skill) => (
               <span
                 key={skill}
