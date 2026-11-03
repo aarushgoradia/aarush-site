@@ -1,44 +1,43 @@
-# Personal Website ✨
+# aarushgoradia.com
 
-This is the code for my personal website built with React, Vite, and Tailwind CSS.
-
-## Features
-- 📱 **Responsive design** that looks great on all devices
-- ⌨️ **Typewriter effects** for dynamic text animations
-- 📚 **Currently reading book section** (easily updatable)
-- 🎨 **Modern, clean UI** with soft pastels and beautiful typography
-- 🚀 **Fast build** with Vite and optimized performance
-- 💼 **Interactive experience showcase** with expandable timeline
-- 🎯 **Smart navigation** with direct links to sections
-
-## Design Philosophy
-- **Approachable & Professional**: Clean, modern design that's not too "techy"
-- **Soft Color Palette**: Gentle purples, pinks, and blues with white backgrounds
-- **Beautiful Typography**: Inter and Poppins fonts for readability and elegance
-- **Smooth Interactions**: Hover effects and transitions for delightful UX
-
-## Quick Start
+one page, dark, terminal-flavored. plain html + css + a little vanilla js, built with vite.
+the old react site lives on the `archive/v1-site` branch.
 
 ```bash
-# Install dependencies
 npm install
-
-# Start development server
-npm run dev
-
-# Build for production
-npm run build
-
-# Deploy to GitHub Pages
-npm run deploy
+npm run dev      # http://localhost:5173
+npm run build    # outputs dist/
 ```
 
-## Updating Your Currently Reading Book
+both `dev` and `build` first run `scripts/fetch-letterboxd.mjs`, which grabs the latest diary entry
+from letterboxd's rss feed for the "last watched" line. if letterboxd is down it just skips.
 
-See [`UPDATE_BOOK.md`](UPDATE_BOOK.md) for simple instructions on how to update your current book.
+## deploying
 
-## Deployment
+push to `main`. the github action (`.github/workflows/deploy.yml`) builds and publishes `dist/` to the
+`gh-pages` branch, which serves aarushgoradia.com. it also rebuilds once a day so "last watched" stays fresh.
 
-Perfect for GitHub Pages! Just build and deploy with a single command.
+## where things live
 
-Access the live site at [aarushgoradia.com](https://aarushgoradia.com) 🌐
+| thing | where |
+| --- | --- |
+| all page copy (now, work, research, films, misc) | `index.html` |
+| currently reading | `index.html`, the `<dd id="reading">` line |
+| letterboxd top 4 | `index.html` `.shelf` + poster images in `public/posters/` |
+| clock, "last push", "last watched" | `src/live.js` |
+| click-to-copy email, devtools hello | `src/ui.js` |
+| email, links, repos hidden from "last push" | `src/site.js` |
+| colors, fonts, layout | `src/style.css` (tokens at the top) |
+| resume (phone number removed) | `public/aarush-goradia-resume.pdf` |
+| link preview card / icons | `public/og.png`, `public/favicon.svg`, `public/apple-touch-icon.png` |
+| 404 page | `public/404.html` (self-contained) |
+
+### swapping a top-4 film
+
+1. on your letterboxd profile, right-click the poster → copy image address
+2. save it to `public/posters/<name>.jpg`
+3. update the matching `<a class="film">` in `index.html` (link, image, title, year · director)
+
+### updating the resume
+
+drop the new pdf at `public/aarush-goradia-resume.pdf` (keep the name so links don't break).

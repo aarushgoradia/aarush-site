@@ -1,22 +1,51 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Aarush Goradia</title>
-    <script>
-      // GitHub Pages SPA redirect fix
-      var pathSegmentsToKeep = 0;
-      var l = window.location;
-      l.replace(
-        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-        l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + 
-        '/?/' + 
-        l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') + 
-        (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
-        l.hash
-      );
-    </script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>404 · aarush goradia</title>
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#0c0b10" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" />
+    <style>
+      :root { --bg: #0c0b10; --line: #262131; --fg: #ebe6f5; --body: #bfb8cf; --muted: #857e96; --accent: #b59dff; --err: #ff9eb0; color-scheme: dark; }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        background-color: var(--bg);
+        background-image: radial-gradient(rgba(255, 255, 255, 0.055) 1px, transparent 1px);
+        background-size: 22px 22px;
+        color: var(--fg);
+        font: 400 14px/1.8 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+        padding-left: max(20px, env(safe-area-inset-left, 0px));
+        padding-right: max(20px, env(safe-area-inset-right, 0px));
+      }
+      main { width: 100%; max-width: 560px; }
+      .big { font-size: 64px; line-height: 1; font-weight: 500; letter-spacing: -0.04em; color: var(--accent); margin: 0 0 28px; }
+      p { margin: 0; overflow-wrap: anywhere; }
+      b { color: var(--accent); font-weight: 500; margin-right: 1ch; }
+      .err { color: var(--err); margin-bottom: 10px; }
+      .m { color: var(--muted); }
+      a { color: var(--fg); text-decoration-color: rgba(181, 157, 255, 0.6); text-underline-offset: 3px; }
+      a:hover { color: var(--accent); }
+      a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
+    </style>
   </head>
-  <body></body>
+  <body>
+    <main>
+      <p class="big">404</p>
+      <p><b>$</b>cd <span id="path">/somewhere</span></p>
+      <p class="err">cd: no such file or directory</p>
+      <p><b>$</b><a href="/">cd ~</a> <span class="m">(take me home)</span></p>
+    </main>
+    <script>
+      document.getElementById('path').textContent = decodeURIComponent(location.pathname)
+    </script>
+  </body>
 </html>

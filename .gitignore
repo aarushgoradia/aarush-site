@@ -80,3 +80,13 @@ temp/
 
 # Local development
 .vercel
+
+# Build output (deployed by CI)
+dist/
+
+# Generated at build time by scripts/fetch-letterboxd.mjs
+public/letterboxd.json
+public/letterboxd/
+
+# Local preview config
+.claude/

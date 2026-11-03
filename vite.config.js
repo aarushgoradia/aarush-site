@@ -1,11 +1,12 @@
 import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
 
-// https://vitejs.dev/config/
+// plain static site: index.html + a little vanilla js. no framework.
 export default defineConfig({
-  plugins: [react()],
+  define: {
+    __BUILD_DATE__: JSON.stringify(new Date().toISOString()),
+  },
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
-  }
+  },
 })

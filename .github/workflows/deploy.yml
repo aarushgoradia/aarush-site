@@ -5,29 +5,42 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+  # rebuild daily so "last watched" picks up new letterboxd diary entries
+  schedule:
+    - cron: '17 10 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Setup Node
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
-        node-version: '18'
+        node-version: '20'
         cache: 'npm'
 
     - name: Install dependencies
       run: npm ci
 
+    # prebuild also pulls the latest letterboxd entry (see scripts/fetch-letterboxd.mjs)
     - name: Build
       run: npm run build
 
     - name: Deploy
-      uses: peaceiris/actions-gh-pages@v3
-      if: github.ref == 'refs/heads/main'
+      uses: peaceiris/actions-gh-pages@v4
+      if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./dist
+        cname: aarushgoradia.com
