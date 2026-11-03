@@ -36,7 +36,7 @@
         "knowsAbout": ["computer architecture", "ML inference systems", "formal verification", "RTL design"],
         "sameAs": [
           "https://github.com/aarushgoradia",
-          "https://www.linkedin.com/in/aarush-goradia-300216215/",
+          "https://www.linkedin.com/in/aarushgoradia/",
           "https://letterboxd.com/aarushgoradia/"
         ]
       }
@@ -45,7 +45,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" />
-    <script type="module" crossorigin src="/assets/index-D_IdRaBY.js"></script>
+    <script type="module" crossorigin src="/assets/index-Ckq3vRUE.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-C7AhStNS.css">
   </head>
   <body>
@@ -71,7 +71,7 @@
         <nav class="links" aria-label="links">
           <a href="mailto:aarush.goradia@princeton.edu" data-copy-email>[email]</a>
           <a href="https://github.com/aarushgoradia">[github]</a>
-          <a href="https://www.linkedin.com/in/aarush-goradia-300216215/">[linkedin]</a>
+          <a href="https://www.linkedin.com/in/aarushgoradia/">[linkedin]</a>
           <a href="/aarush-goradia-resume.pdf">[resume.pdf]</a>
           <a href="https://letterboxd.com/aarushgoradia/">[letterboxd]</a>
         </nav>
@@ -82,7 +82,7 @@
           <h2 id="now-h">~/now<span class="note">// what i'm working on</span><span class="push" id="last-push" hidden></span></h2>
           <div class="card">
             <h3>senior thesis · trillion-param moe inference on commodity hardware</h3>
-            <p>the whole model sits in nvme nand. active experts get staged through dram into gpu memory. my bandwidth model says sequential decode is stuck around 1.5 tok/s on our hardware, so i'm modifying <a href="https://github.com/aarushgoradia/llama.cpp">llama.cpp</a> to get past 10 tok/s. advised by david wentzlaff.</p>
+            <p>the whole model sits in nvme nand. active experts get staged through dram into gpu memory. my bandwidth model says sequential decode is stuck around 1.5 tok/s on our hardware, so i'm modifying <a href="https://github.com/aarushgoradia/llama.cpp-moe-streaming">llama.cpp</a> to get past 10 tok/s. advised by david wentzlaff.</p>
             <div class="pipe" role="img" aria-label="data path: nvme nand to dram to gpu memory, over pcie">
               <div class="node"><b>nvme nand</b><span>whole model</span></div>
               <div class="arrow"><span class="lbl">pcie</span><span class="line"></span></div>
@@ -95,7 +95,7 @@
           <div class="two">
             <div class="card">
               <h3><a class="name" href="https://github.com/aarushgoradia/veri2">veri2</a></h3>
-              <p>co-first author. rtl→sva training data filtered by jaspergold proofs, then qwen2.5-coder-7b fine-tuned on it. 50.2% formal yield vs gpt-5's 41.4%, with ~200x fewer params. under submission.</p>
+              <p>co-first author. rtl→sva training data filtered by jaspergold proofs, then qwen2.5-coder-7b fine-tuned on it. 50.2% formal yield vs gpt-5's 41.4%, with ~200x fewer params. planning to put it on arxiv.</p>
             </div>
             <div class="card">
               <h3>murphy labs</h3>
@@ -130,11 +130,11 @@
           <h2 id="research-h">~/research<span class="note">// &amp; builds</span></h2>
           <div class="rows">
             <div class="r"><div class="k">2024–25</div><div>
-              <h3><a class="name" href="https://github.com/aarushgoradia/ece475-final">branch prediction on a 5-stage risc-v core</a></h3>
+              <h3><a class="name" href="https://github.com/aarushgoradia/riscv-branch-predictors">branch prediction on a 5-stage risc-v core</a></h3>
               <p>bimodal, gshare and tage-lite. gshare cut nested-loop mispredicts from 90.6% to 3.8%, but decode-stage redirects ate most of the ipc win.</p>
             </div></div>
             <div class="r"><div class="k">2025</div><div>
-              <h3><a class="name" href="https://github.com/aarushgoradia/slam-ece302">slam rc car</a></h3>
+              <h3><a class="name" href="https://github.com/aarushgoradia/slam-rc-car">slam rc car</a></h3>
               <p>ros2 + cartographer on a raspberry pi 5, with lidar/imu fusion and apriltag waypoint navigation.</p>
             </div></div>
             <div class="r"><div class="k">2024–25</div><div>
