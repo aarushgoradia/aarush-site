@@ -61,10 +61,9 @@ async function showLastPush() {
   }
 
   el.replaceChildren(
-    h('span', { class: 'dot', 'aria-hidden': 'true' }),
-    'last push: ',
+    ' · last push: ',
     h('a', { href: repo.url }, repo.name),
-    ` · ${ago(repo.pushed)}`,
+    `, ${ago(repo.pushed)}`,
   )
   el.hidden = false
 }
@@ -88,15 +87,12 @@ async function showLastWatched() {
   if (!film?.title) return
 
   const rating = stars(film.rating)
-  el.replaceChildren(
-    film.poster ? h('img', { src: film.poster, alt: '', width: 34, height: 51, loading: 'lazy' }) : null,
-    h('div', {},
-      h('span', { class: 'lbl' }, 'last watched'),
-      h('a', { href: film.link }, film.title),
-      ' ',
-      h('span', { class: 'yr' }, film.year || ''),
-      rating ? h('span', { class: 'stars', 'aria-label': `${film.rating} stars` }, rating) : null,
-      film.liked ? h('span', { class: 'stars', 'aria-label': 'liked' }, ' ♥') : null,
-    ),
-  )
+  // replaceChildren would print a bare null as the text "null", so drop the empties
+  el.replaceChildren(...[
+    'last watched: ',
+    h('a', { href: film.link }, film.title),
+    film.year ? ` (${film.year}) ` : ' ',
+    rating ? h('span', { class: 'stars', 'aria-label': `${film.rating} stars` }, rating) : null,
+    film.liked ? h('span', { class: 'stars', 'aria-label': 'liked' }, ' ♥') : null,
+  ].filter(Boolean))
 }

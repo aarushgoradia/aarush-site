@@ -40,7 +40,7 @@ export async function copyEmail() {
 }
 
 export function initUi() {
-  // [email] copies instead of yanking people into a mail app
+  // the email link copies instead of yanking people into a mail app
   document.querySelectorAll('[data-copy-email]').forEach((a) => {
     a.addEventListener('click', (e) => {
       if (e.metaKey || e.ctrlKey || e.shiftKey) return
@@ -54,17 +54,17 @@ export function initUi() {
   if (updated && typeof __BUILD_DATE__ !== 'undefined') {
     const d = new Date(__BUILD_DATE__)
     const fmt = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: site.timezone })
-    updated.textContent = `last updated ${fmt.toLowerCase()}`
+    updated.textContent = `updated ${fmt.toLowerCase()}`
   }
 
   helloDevtools()
 }
 
 function helloDevtools() {
-  const a = 'color:#b59dff;font:600 14px/1.6 ui-monospace,monospace'
-  const b = 'color:#bfb8cf;font:400 12px/1.6 ui-monospace,monospace'
+  const a = 'color:#2e8b62;font:italic 600 15px/1.6 Georgia,serif'
+  const b = 'font:400 12px/1.6 system-ui,sans-serif'
   console.log(
-    `%c$ whoami%c\nhey, you opened devtools. respect.\nsource: ${site.links.source}\nsay hi: ${site.email}`,
+    `%chey, you opened devtools. respect.%c\nsource: ${site.links.source}\nsay hi: ${site.email}`,
     a, b,
   )
 }
