@@ -1,14 +1,16 @@
-/* single light theme: warm paper, serif text, one narrow column, british racing green accent */
+/* single light theme: white page, one narrow column, british racing green accent.
+   instrument serif for the italic section labels only; newsreader for the name and everything else that's read; plex sans for small print. */
 :root {
-  --bg: #f9f6ee;
+  --bg: #ffffff;
   --fg: #211f1b;
   --body: #45423b;
   --muted: #6f6a60;
-  --line: #e5dfd2;
+  --line: #e7e6e1;
   --accent: #004225;
   --link-line: color-mix(in srgb, var(--accent) 40%, transparent);
   --hl: color-mix(in srgb, var(--accent) 22%, transparent);
 
+  --display: 'Instrument Serif', 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
   --serif: Newsreader, 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
   --sans: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
@@ -58,7 +60,7 @@ mark { color: inherit; background: linear-gradient(transparent 60%, var(--hl) 60
 
 /* ── hero ── */
 .hero { display: grid; grid-template-columns: minmax(0, 1fr) 112px; gap: 44px; align-items: center; }
-h1 { font: 500 50px/1.05 var(--serif); letter-spacing: -0.022em; }
+h1 { font: 500 52px/1.05 var(--serif); letter-spacing: -0.022em; }
 .bio { font-size: 18.5px; line-height: 1.5; margin-top: 16px; text-wrap: pretty; }
 .bio + .bio { margin-top: 2px; }
 .links { display: flex; flex-wrap: wrap; gap: 6px 20px; margin-top: 20px; font: 400 14.5px/1.5 var(--sans); }
@@ -81,7 +83,7 @@ section {
   padding-top: 20px;
   border-top: 1px solid var(--line);
 }
-h2 { font: italic 500 19px/1.4 var(--serif); color: var(--accent); }
+h2 { font: italic 400 23px/1.2 var(--display); color: var(--accent); }
 .items { display: grid; gap: 22px; min-width: 0; }
 .row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0 16px; }
 h3 { font: 500 18.5px/1.4 var(--serif); text-wrap: balance; }
@@ -180,7 +182,7 @@ footer .dot {
   }
   .hero { grid-template-columns: 1fr; gap: 22px; }
   .avatar { order: -1; width: 88px; height: 88px; }
-  h1 { font-size: 40px; }
+  h1 { font-size: 42px; }
   .bio { font-size: 17.5px; }
   section { grid-template-columns: 1fr; }
   .shelf { grid-template-columns: repeat(2, minmax(0, 1fr)); }

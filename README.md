@@ -1,6 +1,6 @@
 # aarushgoradia.com
 
-one page, warm paper, serif. plain html + css + a little vanilla js, built with vite.
+one page, white, serif. plain html + css + a little vanilla js, built with vite.
 the old react site lives on the `archive/v1-site` branch.
 
 ```bash
@@ -28,8 +28,7 @@ push to `main`. the github action (`.github/workflows/deploy.yml`) builds and pu
 | click-to-copy email, devtools hello | `src/ui.js` |
 | email, links, repos hidden from "last push" | `src/site.js` |
 | colors, fonts, layout | `src/style.css` (tokens at the top) |
-| resume (phone number removed) | `public/aarush-goradia-resume.pdf` |
-| link preview card / icons | `public/og.png`, `public/favicon.svg`, `public/apple-touch-icon.png` |
+| link preview card / icons | `public/og.png`, `public/favicon.png`, `public/apple-touch-icon.png` |
 | 404 page | `public/404.html` (self-contained) |
 
 ### swapping a top-4 film
@@ -37,7 +36,3 @@ push to `main`. the github action (`.github/workflows/deploy.yml`) builds and pu
 1. on your letterboxd profile, right-click the poster → copy image address
 2. save it to `public/posters/<name>.jpg`
 3. update the matching `<a class="film">` in `index.html` (link, image, title, year · director)
-
-### updating the resume
-
-drop the new pdf at `public/aarush-goradia-resume.pdf` (keep the name so links don't break).

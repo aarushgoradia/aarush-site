@@ -1,7 +1,6 @@
 // the few facts the scripts need. page copy lives in index.html.
 export const site = {
   email: 'aarush.goradia@princeton.edu',
-  resume: '/aarush-goradia-resume.pdf',
   timezone: 'America/New_York',
   place: 'princeton, nj',
   links: {
