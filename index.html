@@ -4,9 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>aarush goradia</title>
-    <meta name="description" content="aarush goradia. computer architecture, inference systems, and the verification that keeps chips honest. ece @ princeton '27, co-founder @ murphy labs." />
-    <meta name="theme-color" content="#0c0b10" />
-    <meta name="color-scheme" content="dark" />
+    <meta name="description" content="aarush goradia. ece senior at princeton, working on computer architecture and ml inference. co-founder of murphy labs." />
+    <meta name="theme-color" content="#f9f6ee" />
+    <meta name="color-scheme" content="light" />
     <link rel="canonical" href="https://aarushgoradia.com/" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -15,14 +15,14 @@
     <meta property="og:url" content="https://aarushgoradia.com/" />
     <meta property="og:site_name" content="aarush goradia" />
     <meta property="og:title" content="aarush goradia" />
-    <meta property="og:description" content="computer architecture, inference systems, formal verification. ece @ princeton '27, co-founder @ murphy labs." />
+    <meta property="og:description" content="ece senior at princeton, working on computer architecture and ml inference. co-founder of murphy labs." />
     <meta property="og:image" content="https://aarushgoradia.com/og.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="aarush goradia: computer architecture, inference systems, formal verification" />
+    <meta property="og:image:alt" content="aarush goradia: computer architecture and ml inference" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="aarush goradia" />
-    <meta name="twitter:description" content="computer architecture, inference systems, formal verification. ece @ princeton '27, co-founder @ murphy labs." />
+    <meta name="twitter:description" content="ece senior at princeton, working on computer architecture and ml inference. co-founder of murphy labs." />
     <meta name="twitter:image" content="https://aarushgoradia.com/og.png" />
 
     <script type="application/ld+json">
@@ -44,124 +44,107 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" />
-    <script type="module" crossorigin src="/assets/index-DaHP3y3E.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-D1SJf6CY.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&display=swap" />
+    <script type="module" crossorigin src="/assets/index-qRSYGk4W.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-BgKyR73Q.css">
   </head>
   <body>
     <div class="wrap">
-      <div class="bar">
-        <span>~/aarushgoradia.com</span>
-        <span id="clock">princeton, nj</span>
-      </div>
-
       <header class="hero">
-        <div class="id">
-          <img class="avatar" src="/avatar.jpg" alt="aarush goradia" width="418" height="520" />
+        <div>
           <h1>aarush goradia</h1>
+          <p class="bio">ece senior at princeton, working on computer architecture and ml inference.</p>
+          <p class="bio">co-founder of murphy labs.</p>
+          <nav class="links" aria-label="links">
+            <a href="mailto:aarush.goradia@princeton.edu" data-copy-email>email</a>
+            <a href="https://github.com/aarushgoradia">github</a>
+            <a href="https://www.linkedin.com/in/aarushgoradia/">linkedin</a>
+            <a href="/aarush-goradia-resume.pdf">resume</a>
+            <a href="https://letterboxd.com/aarushgoradia/">letterboxd</a>
+          </nav>
         </div>
-
-        <div class="term">
-          <p class="cmd"><b>$</b>whoami</p>
-          <p class="out">i work where models meet silicon: computer architecture, inference systems, and the verification that keeps chips honest.</p>
-          <p class="cmd"><b>$</b>cat about.txt</p>
-          <p class="out">senior in ece at princeton, minoring in cs + english.<br />co-founder @ murphy labs, where we break robots before the real world does.</p>
-        </div>
-
-        <nav class="links" aria-label="links">
-          <a href="mailto:aarush.goradia@princeton.edu" data-copy-email>[email]</a>
-          <a href="https://github.com/aarushgoradia">[github]</a>
-          <a href="https://www.linkedin.com/in/aarushgoradia/">[linkedin]</a>
-          <a href="/aarush-goradia-resume.pdf">[resume.pdf]</a>
-          <a href="https://letterboxd.com/aarushgoradia/">[letterboxd]</a>
-        </nav>
+        <img class="avatar" src="/avatar.jpg" alt="aarush goradia" width="418" height="520" />
       </header>
 
       <main>
         <section id="now" aria-labelledby="now-h">
-          <h2 id="now-h">~/now<span class="note">// what i'm working on</span><span class="push" id="last-push" hidden></span></h2>
-          <div class="card">
-            <h3>senior thesis · trillion-param moe inference on commodity hardware</h3>
-            <p>the whole model sits in nvme nand. active experts get staged through dram into gpu memory. my bandwidth model says sequential decode is stuck around 1.5 tok/s on our hardware, so i'm modifying <a href="https://github.com/aarushgoradia/llama.cpp-moe-streaming">llama.cpp</a> to get past 10 tok/s. advised by david wentzlaff.</p>
-            <div class="pipe" role="img" aria-label="data path: nvme nand to dram to gpu memory, over pcie">
-              <div class="node"><b>nvme nand</b><span>whole model</span></div>
-              <div class="arrow"><span class="lbl">pcie</span><span class="line"></span></div>
-              <div class="node"><b>dram</b><span>staged experts</span></div>
-              <div class="arrow"><span class="lbl">pcie</span><span class="line"></span></div>
-              <div class="node hot"><b>gpu</b><span>active experts</span></div>
+          <h2 id="now-h">now</h2>
+          <div class="items">
+            <div class="item">
+              <div class="row"><h3>murphy labs</h3><span class="when">co-founder</span></div>
+              <p>breaking robots before the real world does.</p>
             </div>
-            <div class="foot">× 3 nodes · expert cache · prefetch · compute/io overlap</div>
-          </div>
-          <div class="two">
-            <div class="card">
-              <h3><a class="name" href="https://github.com/aarushgoradia/veri2">veri2</a></h3>
-              <p>co-first author. rtl→sva training data filtered by jaspergold proofs, then qwen2.5-coder-7b fine-tuned on it. 50.2% formal yield vs gpt-5's 41.4%, with ~200x fewer params. planning to put it on arxiv.</p>
+            <div class="item">
+              <div class="row"><h3>senior thesis: trillion-parameter moe inference on commodity hardware</h3><span class="when">advised by david wentzlaff</span></div>
+              <p>the whole model sits in nvme nand, and active experts get staged through dram into gpu memory. my bandwidth model says sequential decode is stuck around 1.5 tok/s on our 3 nodes, so i'm modifying <a href="https://github.com/aarushgoradia/llama.cpp-moe-streaming">llama.cpp</a> to get past <mark>10 tok/s</mark>.</p>
             </div>
-            <div class="card">
-              <h3>murphy labs</h3>
-              <p>co-founder. breaking robots before the real world does.</p>
+            <div class="item">
+              <div class="row"><h3><a class="name" href="https://github.com/aarushgoradia/veri2">veri2</a></h3><span class="when">first author, with sharad malik · submitting to dac</span></div>
+              <p>rtl→sva training data filtered by jaspergold proofs, then qwen2.5-coder-7b fine-tuned on it. <mark>50.2% formal yield</mark> vs gpt-5's 41.4%, with ~200x fewer params.</p>
             </div>
           </div>
         </section>
 
         <section id="work" aria-labelledby="work-h">
-          <h2 id="work-h">~/work</h2>
-          <div class="log">
-            <div class="e"><div class="date">2026.06–08</div><div>
-              <h3><em>qualcomm</em> · digital verification intern</h3>
-              <p>formal (jaspergold + sva) and uvm for noc power management. built multi-agent llm debug tools three teams adopted, weeks → hours. return offer.</p>
-            </div></div>
-            <div class="e"><div class="date">2025.06–07</div><div>
-              <h3><em>advanced micro foundry</em> · tech dev intern, singapore</h3>
-              <p>automated gds fab checks + drc for tape-out. c++ rewrite: 15–20x faster.</p>
-            </div></div>
-            <div class="e"><div class="date">2024.09–now</div><div>
-              <h3><em>princeton rover</em> · electrical</h3>
+          <h2 id="work-h">work</h2>
+          <div class="items">
+            <div class="item">
+              <div class="row"><h3>qualcomm, digital verification intern</h3><span class="when">jun–aug 2026</span></div>
+              <p>formal (jaspergold + sva) and uvm for noc power management. built multi-agent llm debug tools three teams adopted, <mark>weeks → hours</mark>.</p>
+            </div>
+            <div class="item">
+              <div class="row"><h3>advanced micro foundry, tech dev intern</h3><span class="when">jun–jul 2025 · singapore</span></div>
+              <p>automated gds fab checks + drc for tape-out. c++ rewrite: <mark>15–20x faster</mark>.</p>
+            </div>
+            <div class="item">
+              <div class="row"><h3>princeton rover, electrical</h3><span class="when">sep 2024–now</span></div>
               <p>servo power and bus bars that move a lot of battery current, built to be safe to work next to.</p>
-            </div></div>
-            <div class="e"><div class="date">2024.05–07</div><div>
-              <h3><em>ai seer</em> · ai engineering intern</h3>
+            </div>
+            <div class="item">
+              <div class="row"><h3>ai seer, ai engineering intern</h3><span class="when">may–jul 2024</span></div>
               <p>langchain fact-checking agents (85% → 92%) and realtime whisper transcription. filed a us patent.</p>
-            </div></div>
+            </div>
           </div>
         </section>
 
         <section id="research" aria-labelledby="research-h">
-          <h2 id="research-h">~/research<span class="note">// &amp; builds</span></h2>
-          <div class="rows">
-            <div class="r"><div class="k">2024–25</div><div>
-              <h3><a class="name" href="https://github.com/aarushgoradia/riscv-branch-predictors">branch prediction on a 5-stage risc-v core</a></h3>
-              <p>bimodal, gshare and tage-lite. gshare cut nested-loop mispredicts from 90.6% to 3.8%, but decode-stage redirects ate most of the ipc win.</p>
-            </div></div>
-            <div class="r"><div class="k">2025</div><div>
-              <h3><a class="name" href="https://github.com/aarushgoradia/slam-rc-car">slam rc car</a></h3>
+          <h2 id="research-h">research &amp; builds</h2>
+          <div class="items">
+            <div class="item">
+              <div class="row"><h3><a class="name" href="https://github.com/aarushgoradia/riscv-branch-predictors">branch prediction on a 5-stage risc-v core</a></h3><span class="when">2024–25</span></div>
+              <p>bimodal, gshare and tage-lite. gshare cut nested-loop mispredicts from <mark>90.6% to 3.8%</mark>, but decode-stage redirects ate most of the ipc win.</p>
+            </div>
+            <div class="item">
+              <div class="row"><h3><a class="name" href="https://github.com/aarushgoradia/slam-rc-car">slam rc car</a></h3><span class="when">2025</span></div>
               <p>ros2 + cartographer on a raspberry pi 5, with lidar/imu fusion and apriltag waypoint navigation.</p>
-            </div></div>
-            <div class="r"><div class="k">2024–25</div><div>
-              <h3>rf transformer synthesis <span>· sengupta lab</span></h3>
-              <p>automated layout sims in virtuoso/emx and trained a net to map lumped parameters back to geometry, 90% accurate.</p>
-              <div class="chips"><a class="chip" href="/fall24-paper.pdf">fall '24 paper ↗</a><a class="chip" href="/spring25-paper.pdf">spring '25 paper ↗</a></div>
-            </div></div>
+            </div>
+            <div class="item">
+              <div class="row"><h3>rf transformer synthesis</h3><span class="when">2024–25 · sengupta lab</span></div>
+              <p>automated layout sims in virtuoso/emx and trained a net to map lumped parameters back to geometry, 90% accurate. <a href="/fall24-paper.pdf">fall '24 paper</a>, <a href="/spring25-paper.pdf">spring '25 paper</a>.</p>
+            </div>
           </div>
         </section>
 
         <section id="film" aria-labelledby="film-h">
-          <h2 id="film-h">~/film<span class="note">// letterboxd top 4</span></h2>
-          <div class="shelf">
-            <a class="film" href="https://letterboxd.com/film/the-lord-of-the-rings-the-return-of-the-king/"><img src="/posters/rotk.jpg" alt="poster for the return of the king" width="300" height="450" loading="lazy" /><span class="cap"><b>the return of the king</b>2003 · peter jackson</span></a>
-            <a class="film" href="https://letterboxd.com/film/barry-lyndon/"><img src="/posters/barry-lyndon.jpg" alt="poster for barry lyndon" width="300" height="450" loading="lazy" /><span class="cap"><b>barry lyndon</b>1975 · stanley kubrick</span></a>
-            <a class="film" href="https://letterboxd.com/film/the-human-condition-iii-a-soldiers-prayer/"><img src="/posters/human-condition-iii.jpg" alt="poster for the human condition iii: a soldier's prayer" width="300" height="450" loading="lazy" /><span class="cap"><b>the human condition iii</b>1961 · masaki kobayashi</span></a>
-            <a class="film" href="https://letterboxd.com/film/fanny-and-alexander/"><img src="/posters/fanny-and-alexander.jpg" alt="poster for fanny and alexander" width="300" height="450" loading="lazy" /><span class="cap"><b>fanny and alexander</b>1982 · ingmar bergman</span></a>
-          </div>
-          <div class="follow-row">
-            <div class="last" id="last-watched"><span>i log pretty much everything i watch.</span></div>
-            <a class="follow" href="https://letterboxd.com/aarushgoradia/">follow me on letterboxd →</a>
+          <h2 id="film-h">film</h2>
+          <div>
+            <div class="shelf">
+              <a class="film" href="https://letterboxd.com/film/the-lord-of-the-rings-the-return-of-the-king/"><img src="/posters/rotk.jpg" alt="poster for the return of the king" width="300" height="450" loading="lazy" /><span class="cap"><b>the return of the king</b>2003 · peter jackson</span></a>
+              <a class="film" href="https://letterboxd.com/film/barry-lyndon/"><img src="/posters/barry-lyndon.jpg" alt="poster for barry lyndon" width="300" height="450" loading="lazy" /><span class="cap"><b>barry lyndon</b>1975 · stanley kubrick</span></a>
+              <a class="film" href="https://letterboxd.com/film/the-human-condition-iii-a-soldiers-prayer/"><img src="/posters/human-condition-iii.jpg" alt="poster for the human condition iii: a soldier's prayer" width="300" height="450" loading="lazy" /><span class="cap"><b>the human condition iii</b>1961 · masaki kobayashi</span></a>
+              <a class="film" href="https://letterboxd.com/film/fanny-and-alexander/"><img src="/posters/fanny-and-alexander.jpg" alt="poster for fanny and alexander" width="300" height="450" loading="lazy" /><span class="cap"><b>fanny and alexander</b>1982 · ingmar bergman</span></a>
+            </div>
+            <div class="after">
+              <span id="last-watched">i log pretty much everything i watch.</span>
+              <a href="https://letterboxd.com/aarushgoradia/">more on letterboxd</a>
+            </div>
           </div>
         </section>
 
         <section id="misc" aria-labelledby="misc-h">
-          <h2 id="misc-h">~/misc</h2>
+          <h2 id="misc-h">misc</h2>
           <dl class="misc">
+            <dt>minors</dt><dd>cs + english</dd>
             <dt>reading</dt><dd id="reading"><i>the magic mountain</i>, thomas mann</dd>
             <dt>notes</dt><dd><a href="https://github.com/aarushgoradia/llm-wiki">llm-wiki</a>, my research wiki for comp arch + ml systems papers, kept up with claude code</dd>
             <dt>also</dt><dd>pc building, robotics, strategy games, literature</dd>
@@ -170,8 +153,8 @@
       </main>
 
       <footer>
-        <span>© aarush goradia · <a href="https://github.com/aarushgoradia/aarush-site">source ↗</a></span>
-        <span id="updated">last updated nov '26</span>
+        <span><span class="dot" aria-hidden="true"></span><span id="clock">princeton, nj</span><span id="last-push" hidden></span></span>
+        <span><a href="https://github.com/aarushgoradia/aarush-site">source</a> · <span id="updated">updated nov '26</span></span>
       </footer>
     </div>
 
