@@ -1,20 +1,21 @@
-/* single light theme: white page, one narrow column, british racing green accent.
+/* single dark theme: neutral charcoal page, one narrow column, soft sage accent.
+   (light version was: bg #ffffff, fg #211f1b, body #45423b, muted #6f6a60, line #e7e6e1, accent #004225)
    instrument serif for the italic section labels only; newsreader for the name and everything else that's read; plex sans for small print. */
 :root {
-  --bg: #ffffff;
-  --fg: #211f1b;
-  --body: #45423b;
-  --muted: #6f6a60;
-  --line: #e7e6e1;
-  --accent: #004225;
+  --bg: #131413;
+  --fg: #edece7;
+  --body: #c3c1b9;
+  --muted: #918f87;
+  --line: #2b2c2a;
+  --accent: #9fd0b3;
   --link-line: color-mix(in srgb, var(--accent) 40%, transparent);
-  --hl: color-mix(in srgb, var(--accent) 22%, transparent);
+  --hl: color-mix(in srgb, var(--accent) 30%, transparent);
 
   --display: 'Instrument Serif', 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
   --serif: Newsreader, 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
   --sans: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
-  color-scheme: light;
+  color-scheme: dark;
 }
 
 *,
@@ -105,7 +106,7 @@ h3 a.name:focus-visible { color: var(--accent); text-decoration-color: currentCo
   object-fit: cover;
   border-radius: 3px;
   background: var(--line);
-  box-shadow: 0 0 0 1px var(--line), 0 6px 14px -8px rgba(60, 48, 20, 0.45);
+  box-shadow: 0 0 0 1px var(--line), 0 6px 14px -8px rgba(0, 0, 0, 0.6);
 }
 @media (prefers-reduced-motion: no-preference) { .film img { transition: transform 0.2s ease; } }
 .film:hover img,

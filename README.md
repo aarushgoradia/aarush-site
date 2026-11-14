@@ -1,6 +1,6 @@
 # aarushgoradia.com
 
-one page, white, serif. plain html + css + a little vanilla js, built with vite.
+one page, dark, serif. plain html + css + a little vanilla js, built with vite.
 the old react site lives on the `archive/v1-site` branch.
 
 ```bash
