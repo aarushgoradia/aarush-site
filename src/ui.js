@@ -34,8 +34,8 @@ export async function copyText(text) {
 export async function copyEmail() {
   const ok = await copyText(site.email)
   toast(ok
-    ? `copied ${site.email}<a href="mailto:${site.email}">open mail →</a>`
-    : `${site.email}<a href="mailto:${site.email}">open mail →</a>`)
+    ? `copied ${site.email}<a href="mailto:${site.email}" target="_self">open mail →</a>`
+    : `${site.email}<a href="mailto:${site.email}" target="_self">open mail →</a>`)
   return ok
 }
 
