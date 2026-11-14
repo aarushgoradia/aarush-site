@@ -90,3 +90,9 @@ public/letterboxd/
 
 # Local preview config
 .claude/
+
+# Unpublished writing drafts
+drafts/
+
+# Pages generated from writing/*.md (see scripts/writing.mjs)
+writing/*/

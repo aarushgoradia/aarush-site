@@ -92,6 +92,10 @@ h3 a.name { color: inherit; text-decoration-color: color-mix(in srgb, var(--fg) 
 h3 a.name::after { content: "↗\FE0E";margin-left: 0.3em; font: 400 0.72em var(--sans); color: var(--accent); }
 h3 a.name:hover,
 h3 a.name:focus-visible { color: var(--accent); text-decoration-color: currentColor; }
+/* writing list: titles link to pages on this site, so no outbound arrow */
+h3 a.piece { color: inherit; text-transform: lowercase; text-decoration-color: color-mix(in srgb, var(--fg) 30%, transparent); }
+h3 a.piece:hover,
+h3 a.piece:focus-visible { color: var(--accent); text-decoration-color: currentColor; }
 .when { font: 400 13px/1.5 var(--sans); color: var(--muted); font-variant-numeric: tabular-nums; }
 .item p { color: var(--body); margin-top: 4px; }
 
@@ -174,6 +178,38 @@ footer .dot {
 @media (prefers-reduced-motion: no-preference) { .toast { transition: opacity 0.2s ease, transform 0.2s ease; } }
 .toast a { color: inherit; margin-left: 10px; text-decoration-color: color-mix(in srgb, var(--bg) 50%, transparent); }
 
+/* ── a single piece of writing (/writing/<slug>/) ── */
+.post { max-width: 716px; }
+.post-top { font: 400 14px/1.5 var(--sans); }
+.post-top a,
+.post footer a { text-decoration: none; }
+.post-top a:hover,
+.post footer a:hover { text-decoration: underline; }
+.post h1 { font: 500 38px/1.16 var(--serif); letter-spacing: -0.018em; margin-top: 48px; text-wrap: balance; }
+.post-meta { font: 400 13px/1.5 var(--sans); color: var(--muted); margin-top: 14px; font-variant-numeric: tabular-nums; }
+.prose { margin-top: 40px; font-size: 18.5px; line-height: 1.68; color: var(--body); }
+.prose > * + * { margin-top: 1.15em; }
+.prose em,
+.prose strong { color: var(--fg); }
+.prose h2 { margin-top: 1.9em; }
+.prose h3 { margin-top: 1.7em; color: var(--fg); }
+/* a quoted line set off on its own, with the commentary underneath */
+.prose blockquote {
+  margin: 1.7em 0;
+  padding-left: 22px;
+  border-left: 1px solid var(--line);
+  font: italic 400 21.5px/1.5 var(--serif);
+  color: var(--fg);
+}
+.prose blockquote > * + * { margin-top: 0.6em; }
+.prose figure { margin: 2em 0; }
+.prose figcaption { font: 400 13px/1.5 var(--sans); color: var(--muted); margin-top: 10px; }
+.prose img,
+.prose svg { display: block; max-width: 100%; height: auto; }
+.prose ul,
+.prose ol { padding-left: 1.3em; }
+.prose li + li { margin-top: 0.4em; }
+
 /* ── phone ── */
 @media (max-width: 680px) {
   .wrap {
@@ -189,4 +225,7 @@ footer .dot {
   .shelf { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .misc { grid-template-columns: 1fr; gap: 0; }
   .misc dd { margin-bottom: 8px; }
+  .post h1 { font-size: 30px; margin-top: 36px; }
+  .prose { font-size: 17.5px; margin-top: 32px; }
+  .prose blockquote { font-size: 19.5px; padding-left: 16px; }
 }

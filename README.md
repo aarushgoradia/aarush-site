@@ -28,8 +28,27 @@ push to `main`. the github action (`.github/workflows/deploy.yml`) builds and pu
 | click-to-copy email, devtools hello | `src/ui.js` |
 | email, links, repos hidden from "last push" | `src/site.js` |
 | colors, fonts, layout | `src/style.css` (tokens at the top) |
+| writing (each piece, and the home page list) | `writing/*.md`, built by `scripts/writing.mjs` |
 | link preview card / icons | `public/og.png`, `public/favicon.png`, `public/apple-touch-icon.png` |
 | 404 page | `public/404.html` (self-contained) |
+
+### adding a piece of writing
+
+1. add `writing/<short-name>.md`, starting with:
+
+   ```
+   ---
+   title: The Title, with *italics* if needed
+   date: 2026-11-14
+   ---
+   ```
+
+2. write the piece underneath in markdown. a line starting with `>` sets a quote off on its own,
+   `<mark>…</mark>` underlines a sentence, and plain html (figures, inline svg) passes straight through.
+3. push. the piece gets its own page at `/writing/<short-name>/` and shows up in the "writing" section
+   on the home page, newest first. delete the file to take it down.
+
+unfinished pieces can live in `drafts/`, which git ignores.
 
 ### swapping a top-4 film
 
