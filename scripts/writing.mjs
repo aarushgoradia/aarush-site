@@ -1,5 +1,5 @@
-// turns writing/<slug>.md into a page at /writing/<slug>/ and builds the
-// "writing" list for the home page. used by vite.config.js in dev and build.
+// turns writing/<slug>.md into a page at /writing/<slug>/ and builds the list
+// of pieces at /writing/. used by vite.config.js in dev and build.
 //
 // each piece is one markdown file with a small header:
 //
@@ -30,7 +30,7 @@ function prettyDate(iso) {
   return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' }).toLowerCase()
 }
 
-// first sentence or two of the piece, for link previews and search results
+// first sentence or two of the piece, for the list, link previews and search results
 function summary(md) {
   const para = md.split(/\n\s*\n/).map((p) => p.trim()).find((p) => p && !/^[#>|<-]/.test(p)) || ''
   const text = plain(para.replace(/<[^>]+>/g, '')).replace(/\s+/g, ' ')
@@ -69,15 +69,12 @@ export function loadPosts() {
     .sort((a, b) => b.date.localeCompare(a.date))
 }
 
-function page(post) {
-  const url = `${SITE}/writing/${post.slug}/`
-  return `<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
+// everything in <head>, shared by the list page and each piece
+function head({ title, description, url, type }) {
+  return `    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <title>${esc(post.titlePlain)} · ${AUTHOR}</title>
-    <meta name="description" content="${esc(post.description)}" />
+    <title>${esc(title)} · ${AUTHOR}</title>
+    <meta name="description" content="${esc(description)}" />
     <meta name="author" content="${AUTHOR}" />
     <meta name="theme-color" content="#131413" />
     <meta name="color-scheme" content="dark" />
@@ -85,25 +82,45 @@ function page(post) {
     <link rel="icon" href="/favicon.png" type="image/png" sizes="96x96" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
-    <meta property="og:type" content="article" />
+    <meta property="og:type" content="${type}" />
     <meta property="og:url" content="${url}" />
     <meta property="og:site_name" content="${AUTHOR}" />
-    <meta property="og:title" content="${esc(post.titlePlain)}" />
-    <meta property="og:description" content="${esc(post.description)}" />
+    <meta property="og:title" content="${esc(title)}" />
+    <meta property="og:description" content="${esc(description)}" />
     <meta property="og:image" content="${SITE}/og.png" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="${esc(post.titlePlain)}" />
-    <meta name="twitter:description" content="${esc(post.description)}" />
+    <meta name="twitter:title" content="${esc(title)}" />
+    <meta name="twitter:description" content="${esc(description)}" />
     <meta name="twitter:image" content="${SITE}/og.png" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&family=Instrument+Serif:ital@0;1&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&display=swap" />
-    <script type="module" src="/src/post.js"></script>
+    <script type="module" src="/src/post.js"></script>`
+}
+
+// the top bar, same as the one in index.html. `current` is "page" on the list
+// itself and "true" on a piece, which sits inside the writing section.
+function bar(current) {
+  return `      <div class="bar">
+        <span id="clock">princeton, nj</span>
+        <nav aria-label="pages">
+          <a href="/">home</a>
+          <a href="/writing/" aria-current="${current}">writing</a>
+        </nav>
+      </div>`
+}
+
+function postPage(post) {
+  return `<!doctype html>
+<html lang="en">
+  <head>
+${head({ title: post.titlePlain, description: post.description, url: `${SITE}/writing/${post.slug}/`, type: 'article' })}
   </head>
   <body>
     <div class="wrap post">
-      <nav class="post-top" aria-label="site"><a href="/">← ${AUTHOR}</a></nav>
+${bar('true')}
+
       <article>
         <header>
           <h1>${post.titleHtml}</h1>
@@ -112,8 +129,9 @@ function page(post) {
         <div class="prose">
 ${marked.parse(post.body)}        </div>
       </article>
+
       <footer>
-        <span><a href="/">← back to the front page</a></span>
+        <span><a href="/writing/">← all writing</a></span>
         <span>${AUTHOR}</span>
       </footer>
     </div>
@@ -122,36 +140,55 @@ ${marked.parse(post.body)}        </div>
 `
 }
 
-// writes writing/<slug>/index.html for every piece and clears out pages whose
-// markdown file is gone. returns the posts so the caller can register them.
-export function writePostPages() {
+function listPage(posts) {
+  const items = posts.length
+    ? posts.map((p) => `          <div class="item">
+            <div class="row"><h3><a class="piece" href="/writing/${p.slug}/">${p.titleHtml}</a></h3><span class="when"><time datetime="${esc(p.date)}">${esc(prettyDate(p.date))}</time></span></div>
+            <p>${esc(p.description)}</p>
+          </div>`).join('\n')
+    : '          <p class="post-meta">nothing here yet.</p>'
+  return `<!doctype html>
+<html lang="en">
+  <head>
+${head({ title: 'Writing', description: `Writing by ${AUTHOR}.`, url: `${SITE}/writing/`, type: 'website' })}
+  </head>
+  <body>
+    <div class="wrap post">
+${bar('page')}
+
+      <main>
+        <h1>Writing</h1>
+        <div class="items listing">
+${items}
+        </div>
+      </main>
+
+      <footer>
+        <span><a href="/">← ${AUTHOR}</a></span>
+        <span></span>
+      </footer>
+    </div>
+  </body>
+</html>
+`
+}
+
+// writes writing/index.html and writing/<slug>/index.html for every piece, and
+// clears out pages whose markdown file is gone. returns the posts so the caller
+// can register the pages with vite.
+export function writePages() {
   const posts = loadPosts()
-  if (existsSync(writingDir)) {
-    const keep = new Set(posts.map((p) => p.slug))
-    for (const name of readdirSync(writingDir)) {
-      const full = path.join(writingDir, name)
-      if (statSync(full).isDirectory() && !keep.has(name)) rmSync(full, { recursive: true, force: true })
-    }
+  mkdirSync(writingDir, { recursive: true })
+  const keep = new Set(posts.map((p) => p.slug))
+  for (const name of readdirSync(writingDir)) {
+    const full = path.join(writingDir, name)
+    if (statSync(full).isDirectory() && !keep.has(name)) rmSync(full, { recursive: true, force: true })
   }
   for (const post of posts) {
     const dir = path.join(writingDir, post.slug)
     mkdirSync(dir, { recursive: true })
-    writeFileSync(path.join(dir, 'index.html'), page(post))
+    writeFileSync(path.join(dir, 'index.html'), postPage(post))
   }
+  writeFileSync(path.join(writingDir, 'index.html'), listPage(posts))
   return posts
-}
-
-// the home page's "writing" section. empty string when there is nothing to list,
-// so the section only exists once there is something in it.
-export function writingSection(posts = loadPosts()) {
-  if (!posts.length) return ''
-  const items = posts.map((p) => `            <div class="item">
-              <div class="row"><h3><a class="piece" href="/writing/${p.slug}/" target="_self">${p.titleHtml}</a></h3><span class="when">${esc(prettyDate(p.date))}</span></div>
-            </div>`).join('\n')
-  return `<section id="writing" aria-labelledby="writing-h">
-          <h2 id="writing-h">writing</h2>
-          <div class="items">
-${items}
-          </div>
-        </section>`
 }

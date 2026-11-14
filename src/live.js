@@ -11,7 +11,7 @@ export function princetonTime(opts) {
   return new Intl.DateTimeFormat('en-US', { timeZone: site.timezone, ...opts }).format(new Date()).toLowerCase()
 }
 
-function startClock() {
+export function startClock() {
   const el = document.getElementById('clock')
   if (!el) return
   const tick = () => {
@@ -61,7 +61,8 @@ async function showLastPush() {
   }
 
   el.replaceChildren(
-    ' · last push: ',
+    h('span', { class: 'dot', 'aria-hidden': 'true' }),
+    'last push: ',
     h('a', { href: repo.url }, repo.name),
     `, ${ago(repo.pushed)}`,
   )

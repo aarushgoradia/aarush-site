@@ -96,3 +96,4 @@ drafts/
 
 # Pages generated from writing/*.md (see scripts/writing.mjs)
 writing/*/
+writing/index.html
